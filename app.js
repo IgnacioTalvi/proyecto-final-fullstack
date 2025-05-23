@@ -23,6 +23,8 @@ app.get('/', (req, res) => {
 });
 //API
 
+const pool = require("./config/db_pgsql");
+
 // app.use('/api/products',productsRoutes);
 
 // app.use(error404); // Middleware gestiona error 404
