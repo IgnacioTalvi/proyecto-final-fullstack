@@ -13,6 +13,7 @@ const port = 3001;
 
 // Rutas
 const productsRoutes = require("./routes/products.routes");
+const providersRoutes = require("./routes/providers.routes");
 
 app.use(express.json()); // Habilito recepción de JSON en servidor
 
@@ -26,6 +27,8 @@ app.get('/', (req, res) => {
 const pool = require("./config/db_pgsql");
 
 app.use('/api/products',productsRoutes);
+app.use('/api/providers',providersRoutes);
+
 
 // app.use(error404); // Middleware gestiona error 404
 // app.use("*",error404);
