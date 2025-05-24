@@ -24,27 +24,16 @@ setProducts ([])     }
   fetchData();
 }, []); 
 
-// Fetch all products
-// useEffect(() => {
-//   fetch(API_URL)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Error fetching products");
-//       }
-//       return response.json();
-//     })
-//     .then((data) => setProducts(data))
-//     .catch((error) => setError(error.message));
-// }, []);
-
   return (
     <>
       <div>
       {products.map(product => (
           <article key={product.id_product}>
-            <img src={product.img_url} alt={product.name} className="product_img"/>
+            <img src={product.img_url} alt={product.name} className="product_img" width={'150px'}/>
             <h3>{product.name}</h3>
-            <p>{product.price}</p>
+            <p>{product.price}€</p>
+            <button>Comprar</button>
+            <button>Añadir al carrito</button>
           </article>
         ))}
       </div>
