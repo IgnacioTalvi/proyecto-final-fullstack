@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import './App.css'
+import Header from './components/Header/Header';
 
 function App() {
 
@@ -26,6 +27,7 @@ setProducts ([])     }
 
   return (
     <>
+    <Header />
       <div>
       {products.map(product => (
           <article key={product.id_product}>
