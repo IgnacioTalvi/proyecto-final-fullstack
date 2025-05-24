@@ -1,0 +1,13 @@
+@use '../utils/variables' as variables;
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    list-style: none;   
+
+a {
+    color:variables.$text-dark;
+    }
+
+}
