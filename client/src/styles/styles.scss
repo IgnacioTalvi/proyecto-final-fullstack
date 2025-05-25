@@ -1,6 +1,11 @@
 @use './views/App.scss';
 @use './components/Header';
+@use './components/Logo.scss';
 @use './components/NavItems.scss';
+@use './components/NavIcons.scss';
+@use './components/FiltersSearchContainer.scss';
+@use './components/Search.scss';
+@use './components/ProductsContainer.scss';
 // @use './components/Footer';
 // @use './components/Main';
 @use './components/Navbar';
