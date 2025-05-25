@@ -2,11 +2,12 @@ import React from 'react';
 import '../../../styles/components/Navbar.scss';
 import NavItems from './NavItems/NavItems';
 import NavIcons from './NavIcons/NavIcons';
+import Logo from './Logo'; // <-- nuevo import
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar__logo">VinylStore</div>
+      <Logo />
       <NavItems />
       <NavIcons />
     </nav>

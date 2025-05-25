@@ -1,0 +1,15 @@
+.nav-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: #007bff; /* O el color primario que estés usando */
+  }
