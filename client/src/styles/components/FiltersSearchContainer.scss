@@ -1,0 +1,14 @@
+@use '../utils/variables' as variables;
+
+.filters-search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 0;
+.filter-btn {
+    margin-left: 1em;
+}
+
+}
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import './FiltersSearchContainer.css';
+import '../../../../styles/components/FiltersSearchContainer.scss';
 import Search from './Search/Search';
 import Filters from './Filters/Filters';
 

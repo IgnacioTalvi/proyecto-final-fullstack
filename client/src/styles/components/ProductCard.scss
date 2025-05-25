@@ -1,0 +1,15 @@
+@use '../utils/variables' as variables;
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    .add-to-cart-btn {
+        background-color: variables.$blue-primary;
+        color: variables.$white;
+        border-radius: 1px;
+    }
+    }
