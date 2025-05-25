@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../../../styles/components/FiltersSearchContainer.scss';
 import Search from './Search/Search';
 import Filters from './Filters/Filters';
 
-const FiltersSearchContainer = () => {
+const FiltersSearchContainer = ({search, setSearch}) => {
+  
+// const handleChange = (value) => (event) => {
+//     setSearch({ ...values, [value]: event.target.value });
+//   };
+
   return (
     <section className="filters-search-container">
-      <Search />
+      <Search value={search} setSearch={setSearch} />
       <Filters />
     </section>
   );
