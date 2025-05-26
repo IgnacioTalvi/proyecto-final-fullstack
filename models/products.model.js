@@ -17,7 +17,7 @@ try {
 return result
 }
 
-// CREATE PRODUCT
+// CREATE PRODUCT BY NAME
 const createProduct = async ({ img_url, name, price, relevancy, provider_id}) => {
     const client = await pool.connect();
     try {
@@ -37,10 +37,10 @@ const createProduct = async ({ img_url, name, price, relevancy, provider_id}) =>
   };
 
 // DELETE PRODUCT BY ID
-const deleteProduct = async (id) => {
+const deleteProduct = async (id_product) => {
     const client = await pool.connect();
     try {
-      const result = await client.query(queries.deleteProduct, [id]);
+      const result = await client.query(queries.deleteProduct, [id_product]);
       return result.rowCount;
     } catch (err) {
       throw err;
@@ -49,4 +49,4 @@ const deleteProduct = async (id) => {
     }
   };
 
-module.exports = {getAllProducts, createProduct, deleteProduct}
+module.exports = {getAllProducts, deleteProduct,createProduct}
