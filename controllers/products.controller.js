@@ -14,7 +14,7 @@ const deleteProduct = async (req, res) => {
   const { id } = req.query;
 
   if (!id) {
-    return res.status(400).json({ message: "ID requerido" });
+    return res.status(400).json({ message: "ID del producto requerido" });
   }
 
   try {

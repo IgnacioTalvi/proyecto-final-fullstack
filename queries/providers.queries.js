@@ -2,4 +2,8 @@ const getAllProviders = `SELECT
       *
     FROM providers;`;
 
-    module.exports = {getAllProviders}
+    const deleteProvider = `DELETE FROM providers
+    WHERE id = $1
+    RETURNING *`;    
+
+    module.exports = {getAllProviders, deleteProvider}
