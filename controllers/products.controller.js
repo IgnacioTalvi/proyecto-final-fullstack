@@ -1,5 +1,6 @@
 const product = require("../models/products.model"); // Importar el modelo de la BBDD
 
+// Get all products
 const getAllProducts = async (req, res) => {
   let entries;
   try {
@@ -10,6 +11,20 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+// Create product
+const createProduct = async (req, res) => {
+  const { img_url, name, price, relevancy, provider_id } = req.body;
+
+  try {
+    await product.createProduct(img_url, name, price, relevancy, provider_id);
+    res.status(201).send({ message: `Producto creado: ${name}` });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ message: "Error al crear el producto" });
+  }
+};
+
+// Delete product
 const deleteProduct = async (req, res) => {
   const { id } = req.query;
 
@@ -31,5 +46,5 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-module.exports = {getAllProducts, deleteProduct}
+module.exports = {getAllProducts,createProduct,deleteProduct}
 

@@ -17,6 +17,25 @@ try {
 return result
 }
 
+// CREATE PRODUCT
+const createProduct = async ({ img_url, name, price, relevancy, provider_id}) => {
+    const client = await pool.connect();
+    try {
+      const data = await client.query(queries.createProduct, [
+        img_url, 
+        name, 
+        price, 
+        relevancy, 
+        provider_id
+      ]);
+      return data.rowCount;
+    } catch (err) {
+      throw err;
+    } finally {
+      client.release();
+    }
+  };
+
 // DELETE PRODUCT BY ID
 const deleteProduct = async (id) => {
     const client = await pool.connect();
@@ -30,4 +49,4 @@ const deleteProduct = async (id) => {
     }
   };
 
-module.exports = {getAllProducts, deleteProduct}
+module.exports = {getAllProducts, createProduct, deleteProduct}
