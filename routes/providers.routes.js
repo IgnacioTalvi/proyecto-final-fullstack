@@ -6,3 +6,4 @@ router.get("/",providersController.getAllProviders);
 router.delete("/", providersController.deleteProvider);
 
 module.exports = router;
+

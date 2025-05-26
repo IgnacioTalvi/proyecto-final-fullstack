@@ -17,11 +17,30 @@ try {
 return result
 }
 
-// DELETE PRODUCT BY ID
-const deleteProduct = async (id) => {
+// CREATE PRODUCT BY NAME
+const createProduct = async ({ img_url, name, price, relevancy, provider_id}) => {
     const client = await pool.connect();
     try {
-      const result = await client.query(queries.deleteProduct, [id]);
+      const data = await client.query(queries.createProduct, [
+        img_url, 
+        name, 
+        price, 
+        relevancy, 
+        provider_id
+      ]);
+      return data.rowCount;
+    } catch (err) {
+      throw err;
+    } finally {
+      client.release();
+    }
+  };
+
+// DELETE PRODUCT BY ID
+const deleteProduct = async (id_product) => {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(queries.deleteProduct, [id_product]);
       return result.rowCount;
     } catch (err) {
       throw err;
@@ -30,4 +49,4 @@ const deleteProduct = async (id) => {
     }
   };
 
-module.exports = {getAllProducts, deleteProduct}
+module.exports = {getAllProducts, deleteProduct,createProduct}
