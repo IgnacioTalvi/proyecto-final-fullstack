@@ -17,4 +17,17 @@ try {
 return result
 }
 
-module.exports = {getAllProducts}
+// DELETE PRODUCT BY ID
+const deleteProduct = async (id) => {
+    const client = await pool.connect();
+    try {
+      const result = await client.query(queries.deleteProduct, [id]);
+      return result.rowCount;
+    } catch (err) {
+      throw err;
+    } finally {
+      client.release();
+    }
+  };
+
+module.exports = {getAllProducts, deleteProduct}
