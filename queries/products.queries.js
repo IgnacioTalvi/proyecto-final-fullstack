@@ -2,4 +2,8 @@ const getAllProducts = `SELECT
       *
     FROM products;`;
 
-    module.exports = {getAllProducts}
+const deleteProduct = `DELETE FROM products
+    WHERE id = $1
+    RETURNING *`;
+
+    module.exports = {getAllProducts, deleteProduct}

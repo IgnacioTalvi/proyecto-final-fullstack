@@ -3,8 +3,7 @@ import ProductCard from './ProductCard/ProductCard';
 import '../../../../styles/components/ProductsContainer.scss';
 
 const ProductsContainer = ({products}) => {
-
-
+  
   return (
     <div className="product-list">
       {products.map(product => (
