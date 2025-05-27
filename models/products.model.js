@@ -6,7 +6,7 @@ const getAllProducts = async () => {
 let client, result;
 try {
     client = await pool.connect(); // Espera a abrir conexion
-    const data = await client.query(queries.getAllProducts)
+    const data = await client.query(queries.getProductsWithProviderName)
     result = data.rows
 } catch (err) {
     console.log(err);

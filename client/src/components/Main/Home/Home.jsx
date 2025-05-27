@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import ProductsContainer from './ProductsContainer/ProductsContainer';
 import FiltersSearchContainer from './FiltersSearchContainer/FiltersSearchContainer';
@@ -7,11 +7,9 @@ const Home = () => {
 
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState ('')
-  const [filter, setFilter] = useState ([])
-  const [sortBy, setSortBy] = useState('');
 
   const API_URL = "http://localhost:3001/api/products";
-  
+
   // Fetch all products
   useEffect(() => {
     const fetchData = async () => {
@@ -31,11 +29,12 @@ const Home = () => {
   }, []);
 
   const filterProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.provider_name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const sortButtons = filter.map ((value) => 
-    product.name.toLowerCase().includes(search.toLowerCase()) )
+  console.log(products);
+  
 
   const handleChange = (value) => {
     setSearch(value);
