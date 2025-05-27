@@ -1,0 +1,16 @@
+.footer {
+    color: rgb(20, 20, 20);
+    padding: 2em;
+    text-align: center;
+    font-size: 16px;
+  
+    &__links {
+      margin-top: 10px;
+  
+      a {
+        color: #151515;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+    }
+  }
