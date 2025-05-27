@@ -4,10 +4,6 @@ import Search from './Search/Search';
 import Filters from './Filters/Filters';
 
 const FiltersSearchContainer = ({search, setSearch}) => {
-  
-// const handleChange = (value) => (event) => {
-//     setSearch({ ...values, [value]: event.target.value });
-//   };
 
   return (
     <section className="filters-search-container">

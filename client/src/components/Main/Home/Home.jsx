@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import ProductsContainer from './ProductsContainer/ProductsContainer';
 import FiltersSearchContainer from './FiltersSearchContainer/FiltersSearchContainer';
@@ -7,9 +7,9 @@ const Home = () => {
 
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState ('')
-  
+
   const API_URL = "http://localhost:3001/api/products";
-  
+
   // Fetch all products
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,6 @@ const Home = () => {
         }
         const data = await response.json();
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -29,10 +28,14 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const filterSearch = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
+  const filterProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.provider_name.toLowerCase().includes(search.toLowerCase())
   );
+
+  console.log(products);
   
+
   const handleChange = (value) => {
     setSearch(value);
   }; 
@@ -41,8 +44,8 @@ const Home = () => {
     <div className="home">
       <FiltersSearchContainer 
           search={search} 
-          setSearch={setSearch}  />
-      <ProductsContainer products={filterSearch} />
+          setSearch={setSearch} />
+      <ProductsContainer products={filterProducts} />
     </div>
   );
 };
