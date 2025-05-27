@@ -7,6 +7,7 @@ const Home = () => {
 
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState ('')
+  const [sortBy, setSortBy] = useState('');
 
   const API_URL = "http://localhost:3001/api/products";
 
@@ -33,8 +34,27 @@ const Home = () => {
     product.provider_name.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(products);
-  
+const sortItems = (type) => {
+  setSortBy((prev) => {
+    if (prev === `${type}-asc`) return `${type}-desc`;
+    return `${type}-asc`;
+  });
+};
+
+const sorted = [...filterProducts].sort((a, b) => {
+    switch (sortBy) {
+    case 'nombre-asc':
+      return a.name.localeCompare(b.name);
+    case 'nombre-desc':
+      return b.name.localeCompare(a.name);
+    case 'precio-asc':
+      return parseFloat(a.price) - parseFloat(b.price);
+    case 'precio-desc':
+      return parseFloat(b.price) - parseFloat(a.price);
+    default:
+      return 0;
+  }
+});
 
   const handleChange = (value) => {
     setSearch(value);
@@ -44,8 +64,10 @@ const Home = () => {
     <div className="home">
       <FiltersSearchContainer 
           search={search} 
-          setSearch={setSearch} />
-      <ProductsContainer products={filterProducts} />
+          setSearch={setSearch}
+          sortBy={sortBy}
+          sortItems={sortItems} />
+      <ProductsContainer products={sorted} />
     </div>
   );
 };
