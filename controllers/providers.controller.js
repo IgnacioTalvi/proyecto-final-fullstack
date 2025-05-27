@@ -10,6 +10,17 @@ const getAllProviders = async (req, res) => {
   }
 };
 
+const getProviderById = async (req, res) => {
+  const { id } = req.params;
+  let entries;
+  try {
+      entries = await provider.getProviderById(id);
+    res.status(200).json(entries); // [] con las entries encontradas
+  } catch (error) {
+    res.status(500).json({ error: "Error en la BBDD" });
+  }
+};
+
 const deleteProvider= async (req, res) => {
   const { id } = req.query;
 
@@ -31,4 +42,4 @@ const deleteProvider= async (req, res) => {
   }
 };
 
-module.exports = {getAllProviders, deleteProvider}
+module.exports = {getAllProviders,getProviderById, deleteProvider}

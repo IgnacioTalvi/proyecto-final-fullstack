@@ -7,7 +7,9 @@ const Home = () => {
 
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState ('')
-  
+  const [filter, setFilter] = useState ([])
+  const [sortBy, setSortBy] = useState('');
+
   const API_URL = "http://localhost:3001/api/products";
   
   // Fetch all products
@@ -20,7 +22,6 @@ const Home = () => {
         }
         const data = await response.json();
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -29,10 +30,13 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const filterSearch = products.filter((product) =>
+  const filterProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
   );
-  
+
+  const sortButtons = filter.map ((value) => 
+    product.name.toLowerCase().includes(search.toLowerCase()) )
+
   const handleChange = (value) => {
     setSearch(value);
   }; 
@@ -41,8 +45,8 @@ const Home = () => {
     <div className="home">
       <FiltersSearchContainer 
           search={search} 
-          setSearch={setSearch}  />
-      <ProductsContainer products={filterSearch} />
+          setSearch={setSearch} />
+      <ProductsContainer products={filterProducts} />
     </div>
   );
 };
