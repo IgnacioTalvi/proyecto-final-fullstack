@@ -8,7 +8,7 @@ const Main = () => {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/providers:id" element={<ProductDetail />} />
+        <Route path="/providers/:id" element={<ProductDetail />} />
       </Routes>
     </main>
   );

@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import '../../../styles/components/ProductDetail.scss';
 
 const ProductDetail = () => {
-
-  const [provider, setProvider] = useState([]);
+  
+  const { id } = useParams();
+  const [provider, setProvider] = useState({});
 
   const API_URL = `http://localhost:3001/api/providers/${id}`;
   
@@ -13,10 +16,10 @@ const ProductDetail = () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) {
-          throw new Error("Error al obtener productos");
+          throw new Error("Error al obtener proveedor");
         }
         const data = await response.json();
-        setProducts(data);
+        setProvider(data[0]);
       } catch (error) {
         console.error(error);
       }
@@ -26,11 +29,11 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-    <div className="home">
-      <FiltersSearchContainer 
-          search={search} 
-          setSearch={setSearch} />
-      <ProductsContainer products={filterProducts} />
+    <div className="provider-detail">
+      <h2>Detalles del proveedor</h2>
+      <p><strong>Nombre:</strong> {provider.name}</p>
+      <p><strong>CIF:</strong> {provider.cif}</p>
+      <p><strong>Dirección:</strong> {provider.address}</p>
     </div>
   );
 };
